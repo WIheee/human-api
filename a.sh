@@ -1,3 +1,20 @@
+#!/bin/bash
+# ==============================================
+# Human-API Discord UI 部署脚本 (v10 - 修复 SessionList 崩溃)
+# ==============================================
+set -e
+
+if [ ! -f "app.py" ]; then
+  echo "[错误] 请在 Human-API 项目根目录下运行此脚本（需与 app.py 同级）"
+  exit 1
+fi
+
+echo "[1/3] 清理旧前端..."
+rm -f static/css/style.css static/js/app.js
+mkdir -p static
+
+echo "[2/3] 生成 v10 修复版前端..."
+cat > static/index.html <<'HTMLEOF'
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -503,3 +520,10 @@
     </script>
 </body>
 </html>
+HTMLEOF
+
+echo "[3/3] v10 修复完成！"
+echo "----------------------------------------------------"
+echo "修复内容：SessionList 预览信息增加类型转换保护"
+echo "content 为数组或对象时不再崩溃，会自动转成字符串显示"
+echo "重启后端访问 http://127.0.0.1:5000 即可"
