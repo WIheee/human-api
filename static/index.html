@@ -216,7 +216,7 @@
             },[]);
 
             useEffect(()=>{
-                const s=io(window.location.origin,{ transports:['polling'], reconnection:true, reconnectionDelay:2000 });
+                const s=io(window.location.origin,{ transports:['websocket', 'polling'], reconnection:true, reconnectionDelay:2000 });
                 socketRef.current=s;
                 s.on('connect',()=>setWsConnected(true));
                 s.on('disconnect',()=>setWsConnected(false));

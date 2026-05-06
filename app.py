@@ -37,7 +37,15 @@ logger = logging.getLogger("human-api")
 
 # ==================== Flask 应用初始化 ====================
 app = Flask(__name__, static_folder="static", static_url_path="/static")
-app.config["SECRET_KEY"] = os.urandom(24).hex()
+# 持久化密钥：首次运行时生成并保存到 data/secret_key，重启不失效
+key_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+os.makedirs(key_dir, exist_ok=True)
+key_file = os.path.join(key_dir, "secret_key")
+if not os.path.exists(key_file):
+    with open(key_file, "w") as f:
+        f.write(os.urandom(24).hex())
+with open(key_file, "r") as f:
+    app.config["SECRET_KEY"] = f.read().strip()
 
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
@@ -690,4 +698,4 @@ if __name__ == "__main__":
     print(f"  鉴权:      {'已启用' if api_key else '未启用'}")
     print("=" * 60)
 
-    socketio.run(app, host=host, port=port, debug=False, allow_unsafe_werkzeug=True)
+    socketio.run(app, host=host, port=port, debug=False)
