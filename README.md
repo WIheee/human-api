@@ -3,9 +3,8 @@
 
 python版本需要3.8+
 用到的库
-1. flask
-2. flask-cors
-3. requests
-
+1.  flask>=3.0
+2.  flask-socketio>=5.3
+3.  eventlet>=0.35
 > [!NOTE]
 > 仅供学习与娱乐,请勿用于非法用途!
