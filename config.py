@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Human-API 配置管理模块
-
-负责管理所有运行时配置项，支持：
-- 配置文件持久化（JSON 格式存储到 data/config.json）
-- 运行时热更新配置
-- 默认值兜底
-- 线程安全读写
-"""
-
 import json
 import os
 import threading
@@ -21,7 +10,7 @@ CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
 DEFAULT_CONFIG = {
     "api_key": "",              # API 访问密钥，为空则不鉴权
     "timeout": 120,             # 人工回复超时时间（秒），超时自动回复默认消息
-    "timeout_reply": "抱歉，当前人工客服繁忙，请稍后再试。",  # 超时默认回复
+    "timeout_reply": "抱歉，当前系统繁忙请稍后再。",  # 超时默认回复
     "host": "0.0.0.0",         # 监听地址
     "port": 5000,              # 监听端口
     "max_sessions": 500,       # 最大会话数量
