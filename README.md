@@ -8,6 +8,7 @@ python版本需要3.8+
 3.  eventlet>=0.35
 
 前端我懒得上传了要的提issue
-  另外一个优秀的项目[human-api2.0](https://github.com/wfqefwqf/human-api-webui)
+
+另外一个优秀的项目[human-api2.0](https://github.com/wfqefwqf/human-api-webui)
 > [!NOTE]
 > 仅供学习与娱乐,请勿用于非法用途!
