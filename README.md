@@ -6,6 +6,7 @@ python版本需要3.8+
 1.  flask>=3.0
 2.  flask-socketio>=5.3
 3.  eventlet>=0.35
+(我可能会写错,遇到错误请寻找LLM的帮助)
 
 前端我懒得上传了要的提issue
 
